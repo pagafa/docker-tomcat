@@ -30,7 +30,9 @@ RUN set -x \
 	&& curl -fSL "$TOMCAT_TGZ_URL" -o tomcat.tar.gz \
 	&& curl -fSL "$TOMCAT_TGZ_URL.asc" -o tomcat.tar.gz.asc \
 	&& gpg --verify tomcat.tar.gz.asc \
-	&& tar -xvf tomcat.tar.gz --strip-components=1 \
+	&& tar -xzvf tomcat.tar.gz \
+	&& mv "apache-tomcat-$TOMCAT_VERSION"/* . \
+	&& rm -rf "apache-tomcat-$TOMCAT_VERSION" \ 
 	&& rm bin/*.bat \
 	&& rm tomcat.tar.gz* \
         && apk del curl gpgme \
