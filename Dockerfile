@@ -39,4 +39,4 @@ RUN set -x \
 	&& rm -rf /var/cache/apk/*
 
 EXPOSE 8080
-CMD ["catalina.sh", "run"]
+CMD ["bin/catalina.sh", "run"]
